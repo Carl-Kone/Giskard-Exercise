@@ -11,8 +11,10 @@
 • Add availability:
   - Enter the ```Start time``` and ```End time``` in the format: YYYY-MM-DD HH:MM:SS
   - click on the ```Add Availability``` button.
+  
 • Delete availability:
   - Click on the ```Delete``` button of the availability.
+
 • Reserve availability:
   - Click on the ```Reserve``` button of the availability.
   - Enter the title of the Reservation and your email.
