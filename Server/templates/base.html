@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giskard</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</head>
+
+<body>
+    <div style="margin-top: 50px;" class="ui container">
+        <h1 class="ui center aligned header">AVAILABILITIES</h1>
+        <form class="ui form" id="availability-form" action="/add" method="post">
+            <div class="field">
+                <label>Start time</label>
+                <input type="text" name="start-time" placeholder="FORMAT YYYY-MM-DD HH:MM:SS"><br>
+            </div>
+            <div class="field">
+                <label>End time</label>
+                <input type="text" name="end-time" placeholder="FORMAT YYYY-MM-DD HH:MM:SS"><br>
+            </div>
+            <button class="ui blue button" type="submit">Add Availability</button>
+        </form>
+         <hr>
+        <a href="/reservations"><button class="ui green button">View Reservations</button></a>
+
+        <hr>
+
+        {% for availability in availabilities %}
+        <div class="ui segment">
+            <p class="ui big header">Id: {{ availability[0] }}</p>
+            <p class="ui big header">Start: {{ availability[1] }}</p>
+            <p class="ui big header">End: {{ availability[2] }}</p>
+
+            <a class="ui red button" href="/delete/{{ availability[0] }}">Delete</a>
+            <a class="ui orange button" onclick="showReservationForm()">Reserve</a>
+
+            <form class="ui form" id="reservation-form" action="/reservations/add" method="post" style="display: none;">
+                <div class="field" style="display: none;">
+                <label>ID</label>
+                <input type="hidden" name="id" value="{{ availability[0] }}">
+                <input type="text" value="{{ availability[0] }}" disabled>
+            </div>
+                <div class="field" style="display: none;">
+                <label>Start time</label>
+                <input type="hidden" name="start-time" value="{{ availability[1] }}">
+                <input type="text" value="{{ availability[1] }}" disabled>
+            </div>
+                <div class="field" style="display: none;">
+                <label>End time</label>
+                <input type="hidden" name="end-time" value="{{ availability[2] }}">
+                <input type="text" value="{{ availability[2] }}" disabled>
+            </div>
+                <div class="field" >
+                <label>Title</label>
+                <input type="text" name="title" placeholder="Title of the reservation"><br>
+            </div>
+                <div class="field">
+                <label>Email</label>
+                <input type="text" name="email" placeholder="youremail@email.com"><br>
+            </div>
+            <button class="ui blue button" type="submit">Add Reservation</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>
+
+<script>
+function showReservationForm() {
+  var form = document.getElementById("reservation-form");
+  if (form.style.display === "none") {
+    form.style.display = "block";
+  } else {
+    form.style.display = "none";
+  }
+}
+</script>

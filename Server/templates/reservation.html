@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giskard</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</head>
+
+<body>
+    <div style="margin-top: 50px;" class="ui container">
+        <h1 class="ui center aligned header">RESERVATIONS</h1>
+
+        <hr>
+        <a href="/"><button class="ui green button">View Availabilities</button></a>
+
+
+        {% for reservation in reservations %}
+        <div class="ui segment">
+            <p class="ui big header">Id: {{ reservation[0] }}</p>
+            <p class="ui big header">Start: {{ reservation[1] }}</p>
+            <p class="ui big header">End: {{ reservation[2] }}</p>
+            <p class="ui big header">Title: {{ reservation[3] }}</p>
+            <p class="ui big header">Email: {{ reservation[4] }}</p>
+
+            <a class="ui red button" href="/reservations/delete/{{ reservation[0] }}?start-time={{ reservation[1] }}&end-time={{ reservation[2] }}">Delete</a>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>
