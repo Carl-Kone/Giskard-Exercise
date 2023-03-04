@@ -7,7 +7,7 @@
   - pip install flask
   - python3 main.py
 
-#Web Application USAGE
+# Web Application USAGE
 • Add availability:
   - Enter the ```Start time``` and ```End time``` in the format: YYYY-MM-DD HH:MM:SS
   - click on the "Add Availability" button.
